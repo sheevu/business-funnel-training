@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudarshan AI Labs | Master Sales Funnel & File Portal</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        },
+                        accent: {
+                            500: '#f97316',
+                            600: '#ea580c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.6);
+        }
+        .funnel-trapezoid {
+            clip-path: polygon(6% 0%, 94% 0%, 100% 100%, 0% 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .funnel-trapezoid:hover {
+            transform: scale(1.02) translateY(-2px);
+            filter: brightness(1.1);
+        }
+        .gradient-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 40%, #1e3a8a 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-300 min-h-screen">
+
+    <!-- Top Navigation Bar -->
+    <nav class="sticky top-0 z-50 glass-card border-b border-slate-200 dark:border-slate-800 px-4 lg:px-8 py-3">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-black text-xl shadow-md">
+                    ⚡
+                </div>
+                <div>
+                    <span class="font-display font-bold text-lg leading-none tracking-tight block">SUDARSHAN AI LABS</span>
+                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">Sales Funnel & File Portal (2 Aug 2026)</span>
+                </div>
+            </div>
+
+            <!-- Nav Links -->
+            <div class="hidden md:flex items-center gap-6 text-sm font-semibold">
+                <a href="#repository" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">File Scanner</a>
+                <a href="#funnel-architecture" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">8-Stage Funnel</a>
+                <a href="#decision-pivot" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Decision Pivot</a>
+                <a href="#visual-gallery" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Visual Gallery</a>
+                <a href="#analytics-calculator" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Simulator</a>
+            </div>
+
+            <!-- Theme Toggle & Quick Action -->
+            <div class="flex items-center gap-3">
+                <button id="themeToggleBtn" onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700 transition-all">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
+                </button>
+                <a href="COMPREHENSIVE_SALES_FUNNEL_GUIDE.md" target="_blank" class="hidden sm:inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs px-4 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all">
+                    <i class="fa-solid fa-file-lines"></i> Open MD Guide
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="gradient-hero text-white py-16 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.15),transparent_50%)]"></div>
+        <div class="max-w-6xl mx-auto text-center relative z-10 space-y-6">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-xs font-semibold uppercase tracking-wider">
+                <i class="fa-solid fa-layer-group"></i> Repository File Master & Strategy Portal
+            </div>
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                Strategic Business <span class="text-gradient">Sales Funnel</span>
+            </h1>
+            <p class="max-w-3xl mx-auto text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
+                A unified web document synthesizing all scanned guide PDFs, visual diagrams, interactive analytics, and mathematical simulators into one interactive command center.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+                <a href="#funnel-architecture" class="bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm px-6 py-3 rounded-xl shadow-lg hover:shadow-blue-500/25 transition-all">
+                    Explore 8 Funnel Stages <i class="fa-solid fa-arrow-down ml-1"></i>
+                </a>
+                <a href="#analytics-calculator" class="bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm px-6 py-3 rounded-xl border border-slate-700 transition-all">
+                    Launch ROI Simulator <i class="fa-solid fa-calculator ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+        <!-- 1. FILE REPOSITORY SCANNER SECTION -->
+        <section id="repository" class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h2 class="font-display text-2xl sm:text-3xl font-extrabold tracking-tight flex items-center gap-3">
+                        <span class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-xl"><i class="fa-solid fa-folder-open"></i></span>
+                        Scanned Repository File Manifest
+                    </h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Full index of all workspace files, PDFs, image graphics, and analysis scripts.</p>
+                </div>
+                <div class="flex items-center gap-2 bg-slate-200 dark:bg-slate-800 p-1 rounded-xl text-xs font-bold">
+                    <button onclick="filterFiles('all')" class="file-tab active px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 shadow-sm text-slate-800 dark:text-white">All (9)</button>
+                    <button onclick="filterFiles('pdf')" class="file-tab px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900">PDFs (2)</button>
+                    <button onclick="filterFiles('image')" class="file-tab px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900">Images (5)</button>
+                    <button onclick="filterFiles('code')" class="file-tab px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900">Docs & Code (2)</button>
+                </div>
+            </div>
+
+            <!-- File Table Card -->
+            <div class="glass-card rounded-2xl shadow-xl overflow-hidden border border-slate-200 dark:border-slate-800">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-100/80 dark:bg-slate-900/80 text-xs uppercase tracking-wider text-slate-500 font-bold border-b border-slate-200 dark:border-slate-800">
+                            <tr>
+                                <th class="py-4 px-6">File Name</th>
+                                <th class="py-4 px-4">Type</th>
+                                <th class="py-4 px-4">Size</th>
+                                <th class="py-4 px-6">Content Overview</th>
+                                <th class="py-4 px-4 text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 dark:divide-slate-800" id="fileTableBody">
+                            <tr class="file-row pdf hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
+                                <td class="py-4 px-6 font-semibold flex items-center gap-3">
+                                    <i class="fa-solid fa-file-pdf text-red-500 text-lg"></i>
+                                    <span>Comprehensive Business Sales Funnel Guide-A4-size- (1).pdf</span>
+                                </td>
+                                <td class="py-4 px-4"><span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300">PDF (4 Pages)</span></td>
+                                <td class="py-4 px-4 text-slate-500 font-mono text-xs">84.5 KB</td>
+                                <td class="py-4 px-6 text-slate-600 dark:text-slate-300 text-xs">Complete 8-stage breakdown, lead qualification guidelines, and decision-conversion loops.</td>
+                                <td class="py-4 px-4 text-right">
+                                    <a href="file:///C:/Users/sheev/Downloads/SHEEVUM-2026/SALES-FUNNEL-DIAGRAM/Comprehensive%20Business%20Sales%20Funnel%20Guide-A4-size-%20(1).pdf" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline text-xs font-semibold">Open File <i class="fa-solid fa-external-link text-[10px]"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="file-row pdf hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
+                                <td class="py-4 px-6 font-semibold flex items-center gap-3">
+                                    <i class="fa-solid fa-file-pdf text-red-500 text-lg"></i>
+                                    <span>Comprehensive Business Sales Funnel- Long layoutr- Guide.pdf</span>
+                                </td>
+                                <td class="py-4 px-4"><span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300">PDF (1 Page)</span></td>
+                                <td class="py-4 px-4 text-slate-500 font-mono text-xs">80.2 KB</td>
+                                <td class="py-4 px-6 text-slate-600 dark:text-slate-300 text-xs">Continuous single-page visual layout guide combining text and visual diagrams.</td>
+                                <td class="py-4 px-4 text-right">
+                                    <a href="file:///C:/Users/sheev/Downloads/SHEEVUM-2026/SALES-FUNNEL-DIAGRAM/Comprehensive%20Business%20Sales%20Funnel-%20Long%20layoutr-%20Guide.pdf" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline text-xs font-semibold">Open File <i class="fa-solid fa-external-link text-[10px]"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="file-row image hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
+                                <td class="py-4 px-6 font-semibold flex items-center gap-3">
+                                    <i class="fa-solid fa-file-image text-emerald-500 text-lg"></i>
+                                    <span>core-funnel-architecture.png</span>
+                                </td>
+                                <td class="py-4 px-4"><span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">PNG Diagram</span></td>
+                                <td class="py-4 px-4 text-slate-500 font-mono text-xs">79.0 KB</td>
+                                <td class="py-4 px-6 text-slate-600 dark:text-slate-300 text-xs">Trapezoid visual stack diagram of Stages 1 to 8 showing audience filtration.</td>
+                                <td class="py-4 px-4 text-right">
+                                    <a href="core-funnel-architecture.png" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline text-xs font-semibold">View Image <i class="fa-solid fa-external-link text-[10px]"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="file-row image hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
+                                <td class="py-4 px-6 font-semibold flex items-center gap-3">
+                                    <i class="fa-solid fa-file-image text-emerald-500 text-lg"></i>
+                                    <span>follow-up-cycle.png</span>
+                                </td>
+                                <td class="py-4 px-4"><span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">PNG Diagram</span></td>
+                                <td class="py-4 px-4 text-slate-500 font-mono text-xs">109.0 KB</td>
+                                <td class="py-4 px-6 text-slate-600 dark:text-slate-300 text-xs">Dark-mode infographic covering the Follow-Up Pivot, Yes/No paths, and Revenue Velocity.</td>
+                                <td class="py-4 px-4 text-right">
+                                    <a href="follow-up-cycle.png" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline text-xs font-semibold">View Image <i class="fa-solid fa-external-link text-[10px]"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="file-row image hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
+                                <td class="py-4 px-6 font-semibold flex items-center gap-3">
+                                    <i class="fa-solid fa-file-image text-emerald-500 text-lg"></i>
+                                    <span>lead-segmentation.png</span>
+                                </td>
+                                <td class="py-4 px-4"><span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">PNG Diagram</span></td>
+                                <td class="py-4 px-4 text-slate-500 font-mono text-xs">81.4 KB</td>
+                                <td class="py-4 px-6 text-slate-600 dark:text-slate-300 text-xs">Visual dashboard with Lead Quality Donut and Stage Conversion Rates bar chart.</td>
+                                <td class="py-4 px-4 text-right">
+                                    <a href="lead-segmentation.png" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline text-xs font-semibold">View Image <i class="fa-solid fa-external-link text-[10px]"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="file-row image hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
+                                <td class="py-4 px-6 font-semibold flex items-center gap-3">
+                                    <i class="fa-solid fa-file-image text-emerald-500 text-lg"></i>
+                                    <span>Comprehensive Business Sales Funnel Guide - visual selection 1.png</span>
+                                </td>
+                                <td class="py-4 px-4"><span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">PNG Graphic</span></td>
+                                <td class="py-4 px-4 text-slate-500 font-mono text-xs">262.5 KB</td>
+                                <td class="py-4 px-6 text-slate-600 dark:text-slate-300 text-xs">Modern dark-theme Napkin funnel visual showing stage icons and descriptions.</td>
+                                <td class="py-4 px-4 text-right">
+                                    <a href="IMAGES-Business Sales Funnel Guide - visual selection/Comprehensive Business Sales Funnel Guide - visual selection 1.png" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline text-xs font-semibold">View Image <i class="fa-solid fa-external-link text-[10px]"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="file-row image hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
+                                <td class="py-4 px-6 font-semibold flex items-center gap-3">
+                                    <i class="fa-solid fa-file-image text-emerald-500 text-lg"></i>
+                                    <span>Comprehensive Business Sales Funnel Guide - visual selection 2.png</span>
+                                </td>
+                                <td class="py-4 px-4"><span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">PNG Graphic</span></td>
+                                <td class="py-4 px-4 text-slate-500 font-mono text-xs">279.1 KB</td>
+                                <td class="py-4 px-6 text-slate-600 dark:text-slate-300 text-xs">Isometric 3D staircase diagram showing the 4 Awareness & Discovery pillars.</td>
+                                <td class="py-4 px-4 text-right">
+                                    <a href="IMAGES-Business Sales Funnel Guide - visual selection/Comprehensive Business Sales Funnel Guide - visual selection 2.png" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline text-xs font-semibold">View Image <i class="fa-solid fa-external-link text-[10px]"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="file-row code hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
+                                <td class="py-4 px-6 font-semibold flex items-center gap-3">
+                                    <i class="fa-solid fa-book-bookmark text-purple-500 text-lg"></i>
+                                    <span>sales_funnel_analysis.ipynb</span>
+                                </td>
+                                <td class="py-4 px-4"><span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300">Jupyter Notebook</span></td>
+                                <td class="py-4 px-4 text-slate-500 font-mono text-xs">~4.5 KB</td>
+                                <td class="py-4 px-6 text-slate-600 dark:text-slate-300 text-xs">Python analysis notebook containing data models, plotting scripts, and simulation tools.</td>
+                                <td class="py-4 px-4 text-right">
+                                    <a href="sales_funnel_analysis.ipynb" download class="text-blue-600 dark:text-blue-400 hover:underline text-xs font-semibold">Download IPYNB <i class="fa-solid fa-download text-[10px]"></i></a>
+                                </td>
+                            </tr>
+                            <tr class="file-row code hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors">
+                                <td class="py-4 px-6 font-semibold flex items-center gap-3">
+                                    <i class="fa-solid fa-file-code text-blue-500 text-lg"></i>
+                                    <span>COMPREHENSIVE_SALES_FUNNEL_GUIDE.md</span>
+                                </td>
+                                <td class="py-4 px-4"><span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300">Markdown Master</span></td>
+                                <td class="py-4 px-4 text-slate-500 font-mono text-xs">~8.2 KB</td>
+                                <td class="py-4 px-6 text-slate-600 dark:text-slate-300 text-xs">Detailed master documentation file with execution playbooks, SLAs, and tables.</td>
+                                <td class="py-4 px-4 text-right">
+                                    <a href="COMPREHENSIVE_SALES_FUNNEL_GUIDE.md" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline text-xs font-semibold">Read MD <i class="fa-solid fa-external-link text-[10px]"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. CORE FUNNEL ARCHITECTURE SECTION (8 STAGES) -->
+        <section id="funnel-architecture" class="space-y-8">
+            <div>
+                <h2 class="font-display text-2xl sm:text-3xl font-extrabold tracking-tight flex items-center gap-3">
+                    <span class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-xl"><i class="fa-solid fa-filter"></i></span>
+                    Core Funnel Architecture (The 8 Stages)
+                </h2>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Interactive funnel filtration stack. Click any stage to inspect strategic tactics and SLA targets.</p>
+            </div>
+
+            <!-- Interactive Funnel & Detail Panel Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Funnel Visual Stack (Left 6 Cols) -->
+                <div class="lg:col-span-6 space-y-2 flex flex-col items-center">
+                    <div onclick="selectStage(1)" id="funnel-btn-1" class="funnel-trapezoid cursor-pointer w-full bg-blue-600 text-white p-4 text-center font-bold font-display shadow-md flex items-center justify-between px-8">
+                        <span>1. AWARENESS</span> <span class="text-xs bg-white/20 px-2 py-0.5 rounded">SEO & Content</span>
+                    </div>
+                    <div onclick="selectStage(2)" id="funnel-btn-2" class="funnel-trapezoid cursor-pointer w-[92%] bg-blue-500 text-white p-4 text-center font-bold font-display shadow-md flex items-center justify-between px-8">
+                        <span>2. LEAD GENERATION</span> <span class="text-xs bg-white/20 px-2 py-0.5 rounded">Queries & CTAs</span>
+                    </div>
+                    <div onclick="selectStage(3)" id="funnel-btn-3" class="funnel-trapezoid cursor-pointer w-[84%] bg-blue-400 text-white p-4 text-center font-bold font-display shadow-md flex items-center justify-between px-8">
+                        <span>3. PROSPECTS</span> <span class="text-xs bg-white/20 px-2 py-0.5 rounded">Scoring & Qualification</span>
+                    </div>
+                    <div onclick="selectStage(4)" id="funnel-btn-4" class="funnel-trapezoid cursor-pointer w-[76%] bg-orange-500 text-white p-4 text-center font-bold font-display shadow-lg ring-4 ring-orange-300 dark:ring-orange-900/50 flex items-center justify-between px-8">
+                        <span>4. FOLLOW-UP (DECISION)</span> <span class="text-xs bg-white/20 px-2 py-0.5 rounded">Critical Pivot</span>
+                    </div>
+                    <div onclick="selectStage(5)" id="funnel-btn-5" class="funnel-trapezoid cursor-pointer w-[68%] bg-emerald-600 text-white p-3.5 text-center font-bold font-display shadow-md flex items-center justify-between px-8">
+                        <span>5. CLOSE SALES</span> <span class="text-xs bg-white/20 px-2 py-0.5 rounded">Won Commitments</span>
+                    </div>
+                    <div onclick="selectStage(6)" id="funnel-btn-6" class="funnel-trapezoid cursor-pointer w-[60%] bg-emerald-500 text-white p-3.5 text-center font-bold font-display shadow-md flex items-center justify-between px-8">
+                        <span>6. REVIEW & FEEDBACK</span> <span class="text-xs bg-white/20 px-2 py-0.5 rounded">Social Proof</span>
+                    </div>
+                    <div onclick="selectStage(7)" id="funnel-btn-7" class="funnel-trapezoid cursor-pointer w-[52%] bg-emerald-400 text-white p-3 text-center font-bold font-display shadow-md flex items-center justify-between px-8">
+                        <span>7. REFERENCES</span> <span class="text-xs bg-white/20 px-2 py-0.5 rounded">Word-of-Mouth</span>
+                    </div>
+                    <div onclick="selectStage(8)" id="funnel-btn-8" class="funnel-trapezoid cursor-pointer w-[44%] bg-indigo-600 text-white p-3 text-center font-bold font-display shadow-md flex items-center justify-between px-8">
+                        <span>8. UP-SALE & REPEAT</span> <span class="text-xs bg-white/20 px-2 py-0.5 rounded">Maximize CLV</span>
+                    </div>
+                </div>
+
+                <!-- Stage Detail Display Card (Right 6 Cols) -->
+                <div class="lg:col-span-6 glass-card rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200 dark:border-slate-800 space-y-6" id="stageDetailCard">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. DECISION & CONVERSION LOOP SECTION -->
+        <section id="decision-pivot" class="glass-card rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-200 dark:border-slate-800 bg-slate-900 text-white space-y-8 relative overflow-hidden">
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/20 border border-orange-400/30 text-orange-400 text-xs font-bold uppercase tracking-wider">
+                        ⚡ Core Decision Node
+                    </div>
+                    <h2 class="font-display text-3xl sm:text-4xl font-black">The Follow-Up Pivot & Dual Loop</h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        The Follow-Up phase represents the most critical psychological node in the sales cycle. It integrates consultative relationship management, transparent proposal pricing, and proactive sentiment analysis.
+                    </p>
+                    
+                    <!-- Dynamic Path Selector Buttons -->
+                    <div class="flex items-center gap-4 pt-2">
+                        <button onclick="showLoopPath('yes')" id="pathYesBtn" class="flex-1 py-3.5 px-5 rounded-2xl bg-emerald-500 text-white font-bold text-sm shadow-lg shadow-emerald-500/30 flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-solid fa-circle-check text-lg"></i> The "YES" Path (Won Deal)
+                        </button>
+                        <button onclick="showLoopPath('no')" id="pathNoBtn" class="flex-1 py-3.5 px-5 rounded-2xl bg-slate-800 text-slate-300 font-bold text-sm border border-slate-700 flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-solid fa-circle-xmark text-lg"></i> The "NO" Path (Lost / Delayed)
+                        </button>
+                    </div>
+
+                    <!-- Dynamic Loop Content Box -->
+                    <div id="loopContentDisplay" class="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-4">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Right Side Graphic / Summary Box -->
+                <div class="lg:col-span-5 bg-white/5 p-6 rounded-2xl border border-white/10 space-y-4">
+                    <h3 class="font-display text-xl font-bold text-blue-300 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-line"></i> Revenue Velocity Curve
+                    </h3>
+                    <div class="h-64 relative">
+                        <canvas id="heroVelocityChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 italic text-center">Projected revenue compounding across Q1-Q4 through repeat transactions & up-sells.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. VISUAL ASSET GALLERY -->
+        <section id="visual-gallery" class="space-y-8">
+            <div>
+                <h2 class="font-display text-2xl sm:text-3xl font-extrabold tracking-tight flex items-center gap-3">
+                    <span class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-xl"><i class="fa-solid fa-images"></i></span>
+                    Visual Infographic Asset Gallery
+                </h2>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">High-resolution diagram cards generated during sales funnel design and analysis.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="glass-card rounded-2xl p-4 border border-slate-200 dark:border-slate-800 space-y-3 group hover:shadow-xl transition-all">
+                    <div class="overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900 aspect-video relative">
+                        <img src="core-funnel-architecture.png" alt="Core Funnel Architecture" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="font-display font-bold text-base">Core Funnel Architecture</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Trapezoid visual stack depicting audience filtration across Stages 1-8.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card rounded-2xl p-4 border border-slate-200 dark:border-slate-800 space-y-3 group hover:shadow-xl transition-all">
+                    <div class="overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900 aspect-video relative">
+                        <img src="follow-up-cycle.png" alt="Follow Up Cycle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="font-display font-bold text-base">The Follow-Up Pivot</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Dark-mode infographic of decision branches & revenue velocity.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card rounded-2xl p-4 border border-slate-200 dark:border-slate-800 space-y-3 group hover:shadow-xl transition-all">
+                    <div class="overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900 aspect-video relative">
+                        <img src="lead-segmentation.png" alt="Lead Segmentation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="font-display font-bold text-base">Lead Segmentation Dashboard</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Quality mix doughnut chart and stage conversion bar chart.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-card rounded-2xl p-4 border border-slate-200 dark:border-slate-800 space-y-3 group hover:shadow-xl transition-all">
+                    <div class="overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900 aspect-video relative">
+                        <img src="IMAGES-Business Sales Funnel Guide - visual selection/Comprehensive Business Sales Funnel Guide - visual selection 1.png" alt="Napkin Funnel Diagram" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="font-display font-bold text-base">Modern Dark Funnel Visual</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Napkin visual selection showing stage icons and descriptions.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="glass-card rounded-2xl p-4 border border-slate-200 dark:border-slate-800 space-y-3 group hover:shadow-xl transition-all">
+                    <div class="overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900 aspect-video relative">
+                        <img src="IMAGES-Business Sales Funnel Guide - visual selection/Comprehensive Business Sales Funnel Guide - visual selection 2.png" alt="Sales Success Staircase" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="font-display font-bold text-base">Achieving Sales Success</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Isometric 3D staircase detailing the 4 pillars of Awareness.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. ANALYTICS & LIVE SIMULATOR SECTION -->
+        <section id="analytics-calculator" class="space-y-8">
+            <div>
+                <h2 class="font-display text-2xl sm:text-3xl font-extrabold tracking-tight flex items-center gap-3">
+                    <span class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-xl"><i class="fa-solid fa-calculator"></i></span>
+                    Interactive Business Funnel Simulator & Analytics
+                </h2>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Adjust parameters to simulate live revenue projections and conversion funnel outputs.</p>
+            </div>
+
+            <!-- Simulator Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Controls & Live Output (Left 6 Cols) -->
+                <div class="lg:col-span-6 glass-card rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200 dark:border-slate-800 space-y-6">
+                    <h3 class="font-display font-bold text-xl flex items-center gap-2 text-blue-600 dark:text-blue-400">
+                        <i class="fa-solid fa-sliders"></i> Scenario Parameters
+                    </h3>
+                    
+                    <div class="space-y-5">
+                        <!-- Traffic Input Slider -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm font-semibold">
+                                <span>Monthly Awareness Traffic:</span>
+                                <span id="trafficValDisplay" class="text-blue-600 dark:text-blue-400 font-mono font-bold">10,000</span>
+                            </div>
+                            <input type="range" id="trafficInput" min="1000" max="100000" step="1000" value="10000" oninput="updateCalculator()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                        </div>
+
+                        <!-- Deal Size Slider -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm font-semibold">
+                                <span>Average Deal Size ($):</span>
+                                <span id="dealValDisplay" class="text-emerald-600 dark:text-emerald-400 font-mono font-bold">$1,500</span>
+                            </div>
+                            <input type="range" id="dealInput" min="100" max="10000" step="100" value="1500" oninput="updateCalculator()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-600">
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-4">
+                        <h4 class="font-display font-bold text-sm uppercase tracking-wider text-slate-500">Live Projected Outputs</h4>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                                <span class="text-xs text-slate-500 block">Leads Generated (12%)</span>
+                                <span id="outLeads" class="font-display font-extrabold text-lg sm:text-xl text-blue-600 dark:text-blue-400">1,200</span>
+                            </div>
+                            <div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                                <span class="text-xs text-slate-500 block">Closed Sales (15%)</span>
+                                <span id="outSales" class="font-display font-extrabold text-lg sm:text-xl text-emerald-600 dark:text-emerald-400">50</span>
+                            </div>
+                            <div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                                <span class="text-xs text-slate-500 block">Initial Revenue</span>
+                                <span id="outInitRev" class="font-display font-extrabold text-lg sm:text-xl text-slate-900 dark:text-white">$75,000</span>
+                            </div>
+                            <div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                                <span class="text-xs text-slate-500 block">Up-Sale Revenue (40%)</span>
+                                <span id="outUpsellRev" class="font-display font-extrabold text-lg sm:text-xl text-indigo-600 dark:text-indigo-400">$18,000</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
+                            <span class="font-bold text-sm">Total Projected Revenue:</span>
+                            <span id="outTotalRev" class="font-display font-black text-2xl text-gradient">$93,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Display (Right 6 Cols) -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="glass-card rounded-3xl p-6 shadow-xl border border-slate-200 dark:border-slate-800 space-y-3">
+                        <h3 class="font-display font-bold text-base">Lead Quality Mix</h3>
+                        <div class="h-56 relative">
+                            <canvas id="calcLeadChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-3xl p-6 shadow-xl border border-slate-200 dark:border-slate-800 space-y-3">
+                        <h3 class="font-display font-bold text-base">Stage Conversion Rate Benchmarks</h3>
+                        <div class="h-56 relative">
+                            <canvas id="calcConversionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-card border-t border-slate-200 dark:border-slate-800 py-10 px-6 mt-16 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto space-y-3">
+            <p class="font-semibold text-slate-700 dark:text-slate-300">© 2026 Sudarshan AI Labs. Master Business Sales Funnel & Digital Asset System.</p>
+            <p>Built with Tailwind CSS, Chart.js, and Modern Web Standards for Antigravity AI Pair Programming.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Theme Toggle Functionality
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        // Filter Repository Files
+        function filterFiles(type) {
+            const rows = document.querySelectorAll('.file-row');
+            const tabs = document.querySelectorAll('.file-tab');
+            
+            tabs.forEach(tab => {
+                tab.classList.remove('active', 'bg-white', 'dark:bg-slate-700', 'shadow-sm', 'text-slate-800', 'dark:text-white');
+                tab.classList.add('text-slate-600', 'dark:text-slate-300');
+            });
+            event.target.classList.add('active', 'bg-white', 'dark:bg-slate-700', 'shadow-sm', 'text-slate-800', 'dark:text-white');
+
+            rows.forEach(row => {
+                if (type === 'all' || row.classList.contains(type)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // Funnel Stage Data Data Base
+        const stageData = {
+            1: {
+                title: "1. AWARENESS STAGE",
+                obj: "Maximize reach, visibility, and authoritative digital discovery.",
+                icon: "fa-eye",
+                color: "text-blue-600",
+                strategies: [
+                    "Search Engine Optimization (SEO) targeting high-intent buyer terms.",
+                    "Active directory maintenance across Google Business & LinkedIn.",
+                    "Engaging multi-channel content strategy (blogs, videos, social)."
+                ],
+                target: "Establish dominant digital presence."
+            },
+            2: {
+                title: "2. LEAD GENERATION STAGE",
+                obj: "Convert passive audience views into active inquiries.",
+                icon: "fa-magnet",
+                color: "text-blue-500",
+                strategies: [
+                    "Instant query response system across website, email, and social DMs.",
+                    "High-converting landing pages with clear Calls to Action (CTAs).",
+                    "Lead magnets, interactive calculators, and gated resources."
+                ],
+                target: "Capture verified user contact information."
+            },
+            3: {
+                title: "3. PROSPECTS & QUALIFICATION",
+                obj: "Qualify, score, and segment incoming lead volume.",
+                icon: "fa-bullseye",
+                color: "text-blue-400",
+                strategies: [
+                    "Hot Leads (25%): High intent — immediate solution required (SLA < 5 min).",
+                    "Interested Leads (45%): Active evaluators — require demo & pitch.",
+                    "Positive Leads (30%): Warm browsers — require educational nurturing."
+                ],
+                target: "Prioritize top-tier prospects for sales outreach."
+            },
+            4: {
+                title: "4. THE FOLLOW-UP PIVOT",
+                obj: "Build trust, demonstrate value, and resolve buyer friction.",
+                icon: "fa-comments",
+                color: "text-orange-500",
+                strategies: [
+                    "Consultative relationship management focused on solving problems.",
+                    "Tailored proposal & transparent price quotes.",
+                    "Proactive sentiment analysis to overcome hesitation."
+                ],
+                target: "Guide prospects to a definitive YES decision."
+            },
+            5: {
+                title: "5. CLOSE SALES STAGE",
+                obj: "Finalize deal commitments efficiently.",
+                icon: "fa-handshake",
+                color: "text-emerald-600",
+                strategies: [
+                    "Seamless onboarding transition from prospect to active client.",
+                    "Automated contracts & digital payment gateway processing.",
+                    "Administrative friction elimination."
+                ],
+                target: "Successfully complete sales transaction."
+            },
+            6: {
+                title: "6. REVIEW & FEEDBACK STAGE",
+                obj: "Gather social proof and refine operational processes.",
+                icon: "fa-star",
+                color: "text-emerald-500",
+                strategies: [
+                    "Proactive post-delivery review requests.",
+                    "Capture client testimonials and success case studies.",
+                    "Feed positive reviews back into Stage 1 Awareness."
+                ],
+                target: "Turn satisfied clients into vocal brand advocates."
+            },
+            7: {
+                title: "7. REFERENCES & REFERRALS",
+                obj: "Leverage customer trust for high-ROI organic growth.",
+                icon: "fa-share-nodes",
+                color: "text-emerald-400",
+                strategies: [
+                    "Structured referral incentive programs.",
+                    "Word-of-mouth client expansion networks."
+                ],
+                target: "Acquire warm, trusted incoming leads."
+            },
+            8: {
+                title: "8. UP-SALE & REPEAT STAGE",
+                obj: "Maximize Customer Lifetime Value (CLV).",
+                icon: "fa-chart-line",
+                color: "text-indigo-600",
+                strategies: [
+                    "Cross-sell complementary services and premium features.",
+                    "Long-term retention through regular check-ins and support."
+                ],
+                target: "Build sustainable, recurring revenue streams."
+            }
+        };
+
+        function selectStage(id) {
+            const data = stageData[id];
+            const card = document.getElementById('stageDetailCard');
+            
+            // Highlight selected button
+            for(let i=1; i<=8; i++) {
+                const btn = document.getElementById(`funnel-btn-${i}`);
+                if(i === id) {
+                    btn.classList.add('ring-4', 'ring-blue-400');
+                } else {
+                    btn.classList.remove('ring-4', 'ring-blue-400');
+                }
+            }
+
+            card.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <span class="p-3 rounded-2xl bg-blue-50 dark:bg-blue-900/30 ${data.color} text-2xl">
+                            <i class="fa-solid ${data.icon}"></i>
+                        </span>
+                        <div>
+                            <h3 class="font-display font-extrabold text-2xl tracking-tight">${data.title}</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">${data.obj}</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 pt-2">
+                        <h4 class="font-display font-bold text-xs uppercase tracking-wider text-slate-500">Key Execution Tactics</h4>
+                        <ul class="space-y-2 text-sm text-slate-700 dark:text-slate-200">
+                            ${data.strategies.map(s => `
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-check text-emerald-500 mt-1 text-xs"></i>
+                                    <span>${s}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-100 dark:border-blue-900/50 flex items-center justify-between">
+                        <span class="text-xs font-semibold text-blue-800 dark:text-blue-300">Target Outcome:</span>
+                        <span class="text-xs font-bold text-blue-600 dark:text-blue-400 font-mono">${data.target}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Follow Up Decision Loop Toggle
+        function showLoopPath(type) {
+            const display = document.getElementById('loopContentDisplay');
+            const yesBtn = document.getElementById('pathYesBtn');
+            const noBtn = document.getElementById('pathNoBtn');
+
+            if(type === 'yes') {
+                yesBtn.className = "flex-1 py-3.5 px-5 rounded-2xl bg-emerald-500 text-white font-bold text-sm shadow-lg shadow-emerald-500/30 flex items-center justify-center gap-2 transition-all";
+                noBtn.className = "flex-1 py-3.5 px-5 rounded-2xl bg-slate-800 text-slate-300 font-bold text-sm border border-slate-700 flex items-center justify-center gap-2 transition-all";
+                display.innerHTML = `
+                    <div class="space-y-3">
+                        <h4 class="font-display font-bold text-emerald-400 flex items-center gap-2 text-base">
+                            <i class="fa-solid fa-circle-check"></i> WON DEAL CONVERSION FLOW
+                        </h4>
+                        <ol class="space-y-2 text-xs text-slate-300">
+                            <li class="flex items-start gap-2"><span class="font-bold text-emerald-400">1. Stage 5 Close Sales:</span> Execute contracts & automated payment gateways.</li>
+                            <li class="flex items-start gap-2"><span class="font-bold text-emerald-400">2. Stage 6 Review & Feedback:</span> Collect proactive reviews & social proof.</li>
+                            <li class="flex items-start gap-2"><span class="font-bold text-emerald-400">3. Stage 7 References:</span> Activate word-of-mouth referral programs.</li>
+                            <li class="flex items-start gap-2"><span class="font-bold text-emerald-400">4. Stage 8 Up-Sale & Repeat:</span> Maximize lifetime value with premium upgrades.</li>
+                        </ol>
+                    </div>
+                `;
+            } else {
+                noBtn.className = "flex-1 py-3.5 px-5 rounded-2xl bg-red-500 text-white font-bold text-sm shadow-lg shadow-red-500/30 flex items-center justify-center gap-2 transition-all";
+                yesBtn.className = "flex-1 py-3.5 px-5 rounded-2xl bg-slate-800 text-slate-300 font-bold text-sm border border-slate-700 flex items-center justify-center gap-2 transition-all";
+                display.innerHTML = `
+                    <div class="space-y-3">
+                        <h4 class="font-display font-bold text-red-400 flex items-center gap-2 text-base">
+                            <i class="fa-solid fa-circle-xmark"></i> LOST / DELAYED NURTURING FLOW
+                        </h4>
+                        <ol class="space-y-2 text-xs text-slate-300">
+                            <li class="flex items-start gap-2"><span class="font-bold text-red-400">1. Stage 6 Review & Feedback:</span> Conduct exit friction analysis (Price, Trust, Timing).</li>
+                            <li class="flex items-start gap-2"><span class="font-bold text-red-400">2. Lead Nurturing Re-entry:</span> Re-assign prospect to educational drip campaigns.</li>
+                            <li class="flex items-start gap-2"><span class="font-bold text-red-400">3. Delayed Retargeting:</span> Schedule 60-90 day check-in reminder.</li>
+                        </ol>
+                    </div>
+                `;
+            }
+        }
+
+        // Live Simulator Logic
+        function updateCalculator() {
+            const traffic = parseInt(document.getElementById('trafficInput').value);
+            const deal = parseInt(document.getElementById('dealInput').value);
+
+            document.getElementById('trafficValDisplay').innerText = traffic.toLocaleString();
+            document.getElementById('dealValDisplay').innerText = '$' + deal.toLocaleString();
+
+            const leads = Math.round(traffic * 0.12);
+            const prospects = Math.round(leads * 0.28);
+            const sales = Math.round(prospects * 0.15);
+            const repeat = Math.round(sales * 0.40);
+
+            const initRev = sales * deal;
+            const upsellRev = repeat * (deal * 0.60);
+            const totalRev = initRev + upsellRev;
+
+            document.getElementById('outLeads').innerText = leads.toLocaleString();
+            document.getElementById('outSales').innerText = sales.toLocaleString();
+            document.getElementById('outInitRev').innerText = '$' + initRev.toLocaleString();
+            document.getElementById('outUpsellRev').innerText = '$' + Math.round(upsellRev).toLocaleString();
+            document.getElementById('outTotalRev').innerText = '$' + Math.round(totalRev).toLocaleString();
+        }
+
+        // Initialize Charts & Views on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            selectStage(1);
+            showLoopPath('yes');
+            updateCalculator();
+
+            // Hero Velocity Line Chart
+            const heroCtx = document.getElementById('heroVelocityChart').getContext('2d');
+            new Chart(heroCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                    datasets: [{
+                        label: 'Revenue Index',
+                        data: [100, 140, 210, 320],
+                        borderColor: '#fb923c',
+                        backgroundColor: 'rgba(251, 146, 60, 0.2)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { ticks: { color: '#94a3b8' }, grid: { display: false } },
+                        y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.1)' } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            // Lead Quality Chart
+            const leadCtx = document.getElementById('calcLeadChart').getContext('2d');
+            new Chart(leadCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Hot Leads (25%)', 'Interested Leads (45%)', 'Positive Leads (30%)'],
+                    datasets: [{
+                        data: [25, 45, 30],
+                        backgroundColor: ['#f97316', '#3b82f6', '#7c3aed'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            // Conversion Rates Bar Chart
+            const convCtx = document.getElementById('calcConversionChart').getContext('2d');
+            new Chart(convCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Awareness -> Lead', 'Lead -> Prospect', 'Prospect -> Close', 'Close -> Repeat'],
+                    datasets: [{
+                        label: 'Conversion %',
+                        data: [12, 28, 15, 40],
+                        backgroundColor: '#2563eb',
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { beginAtZero: true, grid: { display: false } },
+                        y: { grid: { display: false } }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Sales Funnel Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .funnel-step {
+            clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+            transition: transform 0.2s ease;
+        }
+        .funnel-step:hover {
+            transform: scale(1.02);
+        }
+        .vibrant-gradient {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900">
+
+<!-- 
+PLAN SUMMARY:
+1. Analyze: The source material defines an 8-stage funnel from Awareness to Up-sale. It features a critical decision point at 'Follow-up' (Yes/No).
+2. Narrative: The infographic flows from "The Broad Reach" (Awareness/Leads) to "The Critical Pivot" (Follow-up/Decision) and concludes with "The Growth Loop" (Retention/Up-sell).
+3. Visualizations: 
+   - Custom HTML/CSS Funnel (Organize): Shows the 8-stage sequence hierarchy. 
+   - Donut Chart (Inform): Categorizes Lead Quality (Hot/Interested/Positive).
+   - Horizontal Bar Chart (Compare): Visualizes conversion rates between stages.
+   - Area Chart (Change): Projects the compound effect of Up-sales and Repeat business.
+Confirmations: NO SVG used. NO Mermaid JS used. All charts render via Canvas.
+Chosen Palette: Brilliant Blues & Vivid Orange (#2563eb, #3b82f6, #f97316, #fb923c).
+-->
+
+    <header class="vibrant-gradient py-12 px-6 text-white text-center shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter">Strategic Business Funnel</h1>
+        <p class="max-w-2xl mx-auto text-lg opacity-90 font-medium">A visual breakdown of the customer lifecycle from initial digital footprint to long-term revenue growth and brand advocacy.</p>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-6 space-y-12">
+        
+        <section>
+            <div class="bg-white rounded-2xl shadow-xl p-8 border-t-8 border-blue-600">
+                <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                    <span class="text-3xl">🎯</span> The Core Funnel Architecture
+                </h2>
+                <p class="text-slate-600 mb-8 leading-relaxed">
+                    The sales funnel is not just a sequence of events but a filtration system. Starting with broad digital visibility, we systematically refine our audience until only high-value, committed clients remain. This visual shows the relative scale and interaction points of each stage.
+                </p>
+                
+                <div class="space-y-2 max-w-2xl mx-auto flex flex-col items-center">
+                    <div class="funnel-step w-full bg-blue-600 text-white p-4 text-center font-bold">1. AWARENESS</div>
+                    <div class="funnel-step w-[90%] bg-blue-500 text-white p-4 text-center font-bold">2. LEAD GENERATION</div>
+                    <div class="funnel-step w-[80%] bg-blue-400 text-white p-4 text-center font-bold">3. PROSPECTS</div>
+                    <div class="funnel-step w-[70%] bg-orange-500 text-white p-4 text-center font-bold border-4 border-white shadow-lg">4. FOLLOW-UP (DECISION)</div>
+                    <div class="funnel-step w-[60%] bg-green-600 text-white p-3 text-center font-bold">5. CLOSE SALES</div>
+                    <div class="funnel-step w-[50%] bg-green-500 text-white p-3 text-center font-bold">6. REVIEW & FEEDBACK</div>
+                    <div class="funnel-step w-[40%] bg-green-400 text-white p-2 text-center font-bold">7. REFERENCES</div>
+                    <div class="funnel-step w-[30%] bg-indigo-600 text-white p-2 text-center font-bold">8. UP-SALE & REPEAT</div>
+                </div>
+                <p class="text-xs text-center mt-6 text-slate-400 font-medium">Visual representation of stage transition and audience volume narrowing.</p>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <section class="bg-white rounded-2xl shadow-md p-6">
+                <h3 class="text-xl font-bold mb-2">Lead Segmentation</h3>
+                <p class="text-sm text-slate-500 mb-6">Effective lead generation distinguishes between casual interest and immediate solutions. This breakdown shows the quality mix of incoming leads.</p>
+                <div class="chart-container">
+                    <canvas id="leadQualityChart"></canvas>
+                </div>
+                <p class="mt-4 text-sm font-semibold text-blue-800 bg-blue-50 p-3 rounded-lg">
+                    Insight: "Hot Leads" represent the highest conversion potential and require response times under 5 minutes for maximum efficiency.
+                </p>
+            </section>
+
+            <section class="bg-white rounded-2xl shadow-md p-6">
+                <h3 class="text-xl font-bold mb-2">Stage Conversion Rates</h3>
+                <p class="text-sm text-slate-500 mb-6">Analyzing where friction occurs in the funnel. The drop-off at the 'Follow-Up' stage often highlights gaps in proposal clarity or sentiment understanding.</p>
+                <div class="chart-container">
+                    <canvas id="conversionChart"></canvas>
+                </div>
+                <p class="mt-4 text-sm font-semibold text-orange-800 bg-orange-50 p-3 rounded-lg">
+                    Insight: A 5% increase in Follow-Up conversion often leads to a 20% increase in final Close Sales due to funnel momentum.
+                </p>
+            </section>
+
+        </div>
+
+        <section class="bg-slate-900 text-white rounded-3xl p-8 md:p-12 overflow-hidden relative">
+            <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-black mb-6 uppercase">The Follow-Up Pivot</h2>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        The Follow-Up phase is the most complex psychological point in the journey. It requires a blend of **Relationship Management**, **Price Proposals**, and **Sentiment Analysis**.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <span class="bg-green-500 p-2 rounded-full text-xl leading-none">✓</span>
+                            <div>
+                                <h4 class="font-bold text-green-400">The "YES" Path</h4>
+                                <p class="text-sm text-slate-400">Immediate transition to Close Sales, Success documentation, and automated payment gateways.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="bg-red-500 p-2 rounded-full text-xl leading-none">✕</span>
+                            <div>
+                                <h4 class="font-bold text-red-400">The "NO" Path</h4>
+                                <p class="text-sm text-slate-400">Re-route to Review & Feedback. Analyze the friction point. Is it price, trust, or timing?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white/5 p-6 rounded-2xl backdrop-blur-sm">
+                    <h3 class="text-xl font-bold mb-4 text-blue-300">Revenue Velocity Projection</h3>
+                    <div class="chart-container h-64">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                    <p class="text-xs mt-4 text-slate-400 italic text-center">Projected growth based on Up-Sale and Referral frequency.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-blue-50 border border-blue-100 p-6 rounded-xl text-center">
+                <div class="text-3xl mb-2">⭐</div>
+                <h4 class="font-bold text-blue-900">Review & Feedback</h4>
+                <p class="text-sm text-blue-700">Turns current success into social proof for new Awareness.</p>
+            </div>
+            <div class="bg-indigo-50 border border-indigo-100 p-6 rounded-xl text-center">
+                <div class="text-3xl mb-2">🔗</div>
+                <h4 class="font-bold text-indigo-900">References</h4>
+                <p class="text-sm text-indigo-700">The highest ROI leads generated via word-of-mouth networks.</p>
+            </div>
+            <div class="bg-orange-50 border border-orange-100 p-6 rounded-xl text-center">
+                <div class="text-3xl mb-2">📈</div>
+                <h4 class="font-bold text-orange-900">Up-Sale & Repeat</h4>
+                <p class="text-sm text-orange-700">Maximize lifetime value through ongoing value addition.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-100 border-t border-slate-200 py-8 text-center text-slate-500 text-sm">
+        <p>© 2024 Sales Funnel SPA. Built with Chart.js and Tailwind CSS.</p>
+    </footer>
+
+    <script>
+        function wrapLabel(label) {
+            if (label.length <= 16) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > 16) {
+                    lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            });
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const tooltipConfig = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            } else {
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        const leadQualityCtx = document.getElementById('leadQualityChart').getContext('2d');
+        new Chart(leadQualityCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Hot Leads', 'Interested Leads', 'Positive Leads'],
+                datasets: [{
+                    data: [25, 45, 30],
+                    backgroundColor: ['#f97316', '#3b82f6', '#7c3aed'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                ...tooltipConfig,
+                plugins: {
+                    ...tooltipConfig.plugins,
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        const conversionCtx = document.getElementById('conversionChart').getContext('2d');
+        new Chart(conversionCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    wrapLabel('Awareness to Lead'),
+                    wrapLabel('Lead to Prospect'),
+                    wrapLabel('Prospect to Close'),
+                    wrapLabel('Close to Repeat')
+                ],
+                datasets: [{
+                    label: 'Conversion %',
+                    data: [12, 28, 15, 40],
+                    backgroundColor: '#2563eb',
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                ...tooltipConfig,
+                scales: {
+                    x: { beginAtZero: true, grid: { display: false } },
+                    y: { grid: { display: false } }
+                }
+            }
+        });
+
+        const growthCtx = document.getElementById('growthChart').getContext('2d');
+        new Chart(growthCtx, {
+            type: 'line',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                    label: 'Retention Revenue',
+                    data: [100, 140, 210, 320],
+                    borderColor: '#fb923c',
+                    backgroundColor: 'rgba(251, 146, 60, 0.2)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                ...tooltipConfig,
+                scales: {
+                    x: { ticks: { color: '#94a3b8' }, grid: { display: false } },
+                    y: { ticks: { display: false }, grid: { color: 'rgba(255,255,255,0.1)' } }
+                },
+                plugins: {
+                    ...tooltipConfig.plugins,
+                    legend: { display: false }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
